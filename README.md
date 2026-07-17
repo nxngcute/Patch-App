@@ -49,7 +49,7 @@ pkg install python -y
 
 **2nd. Method**
 
-    pkg install python git && pip install git+https://github.com/TechnoIndian/ApkPatcher.git
+    pkg install python git && pip install git+https://github.com/Miunxp/Patcher.git
 
 
 Uninstall ApkPatcher
