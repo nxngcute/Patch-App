@@ -42,9 +42,9 @@ def CRC_Fix(apk_path, build_dir, file_types):
 
     open(build_dir, 'wb').write(binary_content)
     
-    print(f"\n{'':20}✨ {C.G}CRCFix by {C.OG}Kirlif{C.G}' ✨\n")
+    print(f"\n{'':20}✨ {C.G}แก้ไข CRC โดย {C.OG}Kirlif{C.G}' ✨\n")
 
-    print(f"{C.C}{'File Name':<22}{'CRC':<12}{'FIX':<12}{'Modified'}")
+    print(f"{C.C}{'ชื่อไฟล์ (File Name)':<22}{'CRC เดิม':<12}{'แก้ไข':<12}{'เวลาที่แก้ไข'}")
 
     for e in Logs:
         print(f"\n{C.G}{e[0]:<22}{e[1]}{'':<4}{e[2]}{'':<4}{e[4]}\n")

@@ -4,7 +4,7 @@ from ..ANSI_COLORS import ANSI; C = ANSI()
 # ---------------- Credits ----------------
 def Credits():
     exit(f"""
-                     💢  Credit  💢
+                     💢  เครดิต (Credit)  💢
 
 {C.S} Flutter SSL & TG Patch {C.E}{C.G} 🇮🇳 AbhiTheM0dder 🇮🇳 {C.S}{C.P} @AbhiTheM0dder {C.E}
 
@@ -18,11 +18,11 @@ def Credits():
 
 {C.S} Uber-Apk-Signer {C.E}{C.G} Patrick Favre {C.S}{C.P} @patrickfav {C.E}
 
-{C.S} My Channel {C.E}{C.CC} 🇮🇳 ࿗ {C.OG}T̴͢͢e̴͢͢c̴͢͢h̴͢͢n̴͢͢o̴͢͢ {C.B}☣{C.G} I̴͢͢n̴͢͢d̴͢͢i̴͢͢a̴͢͢ {C.CC}࿗ 🇮🇳 {C.S}{C.P} @rktechnoindians {C.E}
+{C.S} ช่องของฉัน {C.E}{C.CC} 🇮🇳 ࿗ {C.OG}T̴͢͢e̴͢͢c̴͢͢h̴͢͢n̴͢͢o̴͢͢ {C.B}☣{C.G} I̴͢͢n̴͢͢d̴͢͢i̴͢͢a̴͢͢ {C.CC}࿗ 🇮🇳 {C.S}{C.P} @rktechnoindians {C.E}
 
-{C.S} CREATOR {C.E}{C.G} 𓄂 Ꭱꫝℑ 𓆐 ︻デ═一 ࿗ Я͓̽K͓̽ ࿗ {C.S}{C.P} @RK_TECHNO_INDIA {C.E}
+{C.S} ผู้พัฒนา {C.E}{C.G} 𓄂 Ꭱꫝℑ 𓆐 ︻デ═一 ࿗ Я͓̽K͓̽ ࿗ {C.S}{C.P} @RK_TECHNO_INDIA {C.E}
 
 
-{C.S}  NOTE  {C.E} {C.Y} Please Maintain Our Credits. 🙏🙏
+{C.S}  หมายเหตุ  {C.E} {C.Y} โปรดให้เครดิตและไม่ลบเครดิตของผู้พัฒนา ขอบคุณครับ 🙏🙏
 
     """)

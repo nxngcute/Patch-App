@@ -16,18 +16,18 @@ def Anti_Split(apk_path, isMerge, isCoreX):
     base_name, Ext = M.os.path.splitext(apk_path)
 
     if apk_path and isCoreX and M.os.path.splitext(apk_path)[-1].lower() not in Merge_Ext:
-        exit(f"\n{C.X}{C.C} Only Supported Extensions {C.G}{Merge_Ext} with {C.OG}CoreX\n")
+        exit(f"\n{C.X}{C.C} รองรับเฉพาะไฟล์นามสกุล {C.G}{Merge_Ext} ร่วมกับ {C.OG}CoreX เท่านั้น\n")
 
     if Ext in Merge_Ext:
         output_path = f"{base_name.replace(' ', '_')}.apk"
 
         print(
             f"{C_Line}\n\n"
-            f"\n{C.X}{C.C} Anti-Split Start..."
+            f"\n{C.X}{C.C} เริ่มกระบวนการ Anti-Split..."
         )
 
         print(
-            f"{C.G}  |\n  └──── {C.CC}Decompiling ~{C.G}$ java -jar {M.os.path.basename(F.APKEditor_Path)} m -i {apk_path} -f -o {output_path}"
+            f"{C.G}  |\n  └──── {C.CC}กำลังแตกไฟล์ (Decompiling) ~{C.G}$ java -jar {M.os.path.basename(F.APKEditor_Path)} m -i {apk_path} -f -o {output_path}"
             + (" -extractNativeLibs true" if isCoreX else "")
             + f"\n\n{C_Line}{C.G}\n"
         )
@@ -41,7 +41,7 @@ def Anti_Split(apk_path, isMerge, isCoreX):
             result = M.subprocess.run(cmd, check=True)
 
             print(
-                f"\n{C.X}{C.C} Anti-Split Successful {C.G} ✔\n"
+                f"\n{C.X}{C.C} ทำการ Anti-Split สำเร็จ {C.G} ✔\n"
                 f"\n{C_Line}\n"
             )
 
@@ -51,12 +51,12 @@ def Anti_Split(apk_path, isMerge, isCoreX):
             return output_path
 
         except M.subprocess.CalledProcessError as e:
-            exit(f"\n{C.ERROR} Anti-Split Failed !  ✘\n")
+            exit(f"\n{C.ERROR} กระบวนการ Anti-Split ล้มเหลว !  ✘\n")
 
     if isMerge and Ext not in Merge_Ext:
         exit(
-            f"\n{C.ERROR} Split  ✘\n\n"
-            f"\n{C.INFO} {C.C} Only Supported Extensions {C.G}{Merge_Ext}\n"
+            f"\n{C.ERROR} แยกไฟล์ล้มเหลว (Split Failed) ✘\n\n"
+            f"\n{C.INFO} {C.C} รองรับเฉพาะไฟล์นามสกุล {C.G}{Merge_Ext} เท่านั้น\n"
         )
 
     return apk_path
