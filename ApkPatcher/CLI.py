@@ -3,6 +3,46 @@ from .MODULES import IMPORT; M = IMPORT()
 
 from ApkPatcher.Utils.Files_Check import __version__
 
+# ---------------- Utility Functions ----------------
+def _print_header():
+    print(f"{C.R}●{C.Y}●{C.G}●{C.C}\n")
+    header_text = "TERMUX SETUP"
+    print(f"  {C.G}{header_text}{C.CC}\n")
+
+def _print_info_line(label, value, value_color=C.C, highlight=False):
+    arrow = f"{C.G}➤{value_color}"
+    if highlight:
+        formatted_value = f"{C.M}{value}{C.C}"
+    else:
+        formatted_value = value
+    print(f"{C.C}【{C.P}●{C.C}】  {label:<16} {arrow} {formatted_value}")
+
+def _print_menu_line(key, description, description_color=C.CC):
+    print(f"{C.C}[{C.Y}{key}{C.C}] {description_color}{description}{C.C}")
+
+def print_system_info():
+    # สมมติค่าเหล่านี้ได้มาจากฟังก์ชันอื่น
+    import socket; import time
+    hostname = socket.gethostname()
+    try:
+        ip_address = socket.gethostbyname(hostname)
+    except socket.gaierror:
+        ip_address = "127.0.0.1"
+    current_time = time.strftime("%I:%M %p")
+    current_date = time.strftime("%d/%B/%Y")
+
+    print(f"{C.C}┌────────────────────────────────────────────────────────┐{C.CC}")
+    _print_info_line("YOUR IP", ip_address)
+    _print_info_line("TODAY TIME", current_time)
+    _print_info_line("TODAY DATE", current_date)
+    print(f"{C.C}└────────────────────────────────────────────────────────┘{C.CC}\n")
+
+def print_main_menu():
+    print(f"{C.C}┌────────────────────────────────────────────────────────┐{C.CC}")
+    _print_menu_line("01/A", "TERMUX BASIC SETUP", C.M)
+    _print_menu_line("02/B", "TERMUX FULL SETUP", C.M)
+    _print_menu_line("00/X", "BACK TO MAIN MENU", C.R)
+    print(f"{C.C}└────────────────────────────────────────────────────────┘{C.CC}\n")
 
 Tag = f"\n{C.CC}————|———————|————{C.G}•❀ {C.OG}Tag {C.G}❀•{C.CC}————|———————|————\n"
 
@@ -40,10 +80,16 @@ class CustomArgumentParser(M.argparse.ArgumentParser):
 
     # ---------------- Print Help ----------------
     def print_help(self):
-
-        super().print_help()
-
-        print(f"\n{C.INFO} แพตช์เริ่มต้นของ ApkPatcher คือการบายพาส VPN & SSL หากต้องการดูรายการพารามิเตอร์แพตช์อื่นๆ ให้ใช้คำสั่ง: {C.G}ApkPatcher -O{C.C}\n")
+        # แทนที่การพิมพ์ help แบบเดิมด้วย UI ใหม่
+        _print_header()
+        _print_info_line("DEVELOPER", "U7P4L 1N")
+        _print_info_line("GITHUB", "U7P4L-IN")
+        _print_info_line("VERSION", __version__)
+        _print_info_line("TELEGRAM", "t.me/TheU7p41ArmyX")
+        _print_info_line("TOOL'S NAME", "TERMUX BASIC SETUP", highlight=True)
+        print("\n")
+        print_system_info()
+        print_main_menu()
 
     # ---------------- Other Patch ----------------
     def Other_Patch(self):
@@ -200,149 +246,4 @@ def parse_arguments():
         '-u',
         dest='unsigned_apk',
         action='store_true',
-        help=f"{C.Y}->{C.G} คงสถานะไฟล์ APK แบบไม่เซ็นชื่อ (Unsigned){C.C}"
-    )
-
-
-    # ---------------- Other Patch Flags ----------------
-    parser.add_argument(
-        '-A',
-        '--AES_Logs',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-A2',
-        '--Algorithm',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-D',
-        '--Android_ID',
-        type=str,
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-f',
-        '--Flutter',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-l',
-        '--Load_Modules',
-        type=str,
-        nargs='*',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-p',
-        '--Pairip',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-P',
-        '--Purchase',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-r',
-        '--Random_Info',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-rmads',
-        '--Remove_Ads',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-rmss',
-        '--Remove_SS',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-rmusb',
-        '--Remove_USB',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-pkg',
-        '--Spoof_PKG',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-pine',
-        '--Pine_Hook',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-skip',
-        dest='Skip_Patch',
-        nargs='*',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-s',
-        '--AES_S',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-t',
-        '--TG_Patch',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-    parser.add_argument(
-        '-x',
-        '--Hook_CoreX',
-        action='store_true',
-        help=M.argparse.SUPPRESS
-    )
-
-
-    Ext = ('.apk', '.apks', '.apkm', '.xapk')
-
-    fixed = []; start = None; Valid_Ext = False
-
-    for index, option in enumerate(args):
-        if option in ['-i', '-m', '-C']:
-            start, fixed = index + 1, fixed + [option]
-        elif start and (option.endswith(Ext) or M.os.path.isdir(option)):
-            fixed, start = fixed + [' '.join(args[start:index+1])], None
-            Valid_Ext = True
-        elif not start:
-            fixed.append(option)
-
-
-    if not Valid_Ext and M.sys.argv[1:2] != ['-C']:
-        print(f"\n{C.X}{C.C} รองรับเฉพาะไฟล์นามสกุลต่อไปนี้เท่านั้น: {C.G}{Ext}\n")
-
-    print(f"\n{C.S} พาธนำเข้า (Input Path) {C.E} {C.OG}->❥{C.Y}", *fixed, f"{C.CC}\n")
-
-    return parser.parse_args(fixed)
+        help=
